@@ -515,7 +515,9 @@ BlockView.prototype.draw = function() {
   innerWidth = Math.max(
     this.hasScript
       ? 160
-      : this.isHat ? 108 : this.isCommand || this.isOutline ? 64 : 0,
+      : this.isHat
+        ? 108
+        : this.isCommand || this.isOutline ? 64 : this.isReporter ? 48 : 0,
     innerWidth
   )
   this.height = y
