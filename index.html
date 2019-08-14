@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf8">
-<meta name=viewport content="width=device-width, initial-scale=1">
-<title>scratchblocks dev</title>
+<meta name=viewport content="width=480, initial-scale=1, maximum-scale=1">
+<!-- <title>scratchblocks dev</title> -->
 
 <meta name=description content="Use scratchblocks to write pictures of Scratch scripts in forum posts.">
 
@@ -9,6 +9,84 @@
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
 -->
 <link rel=stylesheet href="index.css">
+
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="motion-gradient">
+    <stop offset="5%" stop-color="#5F95F7" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="looks-gradient">
+    <stop offset="5%" stop-color="#9168F6" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="sound-gradient">
+    <stop offset="5%" stop-color="#C169CA" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="control-gradient">
+    <stop offset="5%" stop-color="#FFAB1A" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="events-gradient">
+    <stop offset="5%" stop-color="#F4D200" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="sensing-gradient">
+    <stop offset="5%" stop-color="#71AFD2" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="operators-gradient">
+    <stop offset="5%" stop-color="#74BE65" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="variables-gradient">
+    <stop offset="5%" stop-color="#F0923C" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="list-gradient">
+    <stop offset="5%" stop-color="#e64d00" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="custom-gradient">
+    <stop offset="5%" stop-color="#FF6680" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
+
+<svg style="width:100;height:100;position:relative;" aria-hidden="true" focusable="false">
+  <linearGradient gradientUnits="userSpaceOnUse" id="extension-gradient">
+    <stop offset="5%" stop-color="#0FBD8C" stop-opacity="1"/>
+    <stop offset="10%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+</svg>
 
 <style>
 #preview > svg {
@@ -44,14 +122,14 @@
   display: none;
 }
 body {
-  background: #dddede;
+  background: white;
 }
 </style>
 
 <!---------------------------------------------------------------------------->
 
 <h1>
-  <a id=title href="/">scratchblocks dev</a>
+  <a id=title href="/">scratchblocks dev encore fork</a>
   <span>
     <a target="_blank" href="http://wiki.scratch.mit.edu/wiki/Block_Plugin/Syntax">help</a>
     <a href="http://github.com/blob8108/scratchblocks2">github</a>
@@ -217,14 +295,15 @@ function objUpdated() {
   var docView3 = scratchblocks.newView(doc, {
     style: "scratch3",
   });
+  /*
   var docView2 = scratchblocks.newView(doc, {
     style: "scratch2",
-  });
+  });*/
   var svg3 = docView3.render();
-  var svg2 = docView2.render();
+  //var svg2 = docView2.render();
   preview.innerHTML = "";
   preview.appendChild(svg3);
-  preview.appendChild(svg2);
+  //preview.appendChild(svg2);
   svg3.classList.add("scratch3")
 
   // add export link
@@ -278,4 +357,3 @@ document.addEventListener('keydown', showDiff);
 document.addEventListener('keyup', showDiff);
 
 </script>
-

@@ -11,6 +11,8 @@ const {
 
 const SVG = require("./draw.js")
 
+const scaleFactor = 1.22;
+
 const { defaultFont, commentFont, makeStyle, makeIcons } = require("./style.js")
 
 /* Label */
@@ -19,7 +21,7 @@ var LabelView = function(label) {
   Object.assign(this, label)
 
   this.el = null
-  this.height = 12
+  this.height = 6
   this.metrics = null
   this.x = 0
 }
@@ -31,7 +33,7 @@ LabelView.prototype.draw = function() {
 
 Object.defineProperty(LabelView.prototype, "width", {
   get: function() {
-    return this.metrics.width
+    return this.metrics.width * scaleFactor
   },
 })
 
@@ -54,7 +56,7 @@ LabelView.prototype.measure = function() {
     this.metrics = cache[value]
   } else {
     var font = /comment-label/.test(this.cls) ? commentFont : defaultFont
-    this.metrics = cache[value] = LabelView.measure(value, font)
+    this.metrics = cache[value] = LabelView.measure(value, font);
     // TODO: word-spacing? (fortunately it seems to have no effect!)
   }
 }
@@ -64,6 +66,7 @@ LabelView.measure = function(value, font) {
   context.font = font
   var textMetrics = context.measureText(value)
   var width = (textMetrics.width + 0.5) | 0
+  width *= scaleFactor;
   return { width: width }
 }
 
@@ -171,7 +174,7 @@ InputView.prototype.draw = function(parent) {
     // Minimum width of 40, at which point we center the label
     var px = this.label.width >= 18 ? 11 : (40 - this.label.width) / 2
     var w = this.label.width + 2 * px
-    label = SVG.move(px, 9, label)
+    label = SVG.move(px, 12, label)
   } else {
     var w = this.isInset ? 30 : null
   }
@@ -213,7 +216,7 @@ InputView.prototype.draw = function(parent) {
     }
   } else if (this.shape === "boolean") {
     el.classList.remove("sb3-" + parent.info.category)
-    el.classList.add("sb3-" + parent.info.category + "-dark")
+    el.classList.add("sb3-" + parent.info.category + "-alt")
 
     // custom colors
     if (parent.info.color) {
@@ -357,7 +360,7 @@ BlockView.prototype.horizontalPadding = function(child) {
     if (child.isIcon) {
       return 16
     } else if (child.isLabel) {
-      return 12 // text in circle: 3 units
+      return 12  // text in circle: 3 units
     } else if (child.isDropdown) {
       return 12 // square in circle: 3 units
     } else if (child.isBoolean) {
@@ -387,10 +390,9 @@ BlockView.prototype.marginBetween = function(a, b) {
   // Consecutive labels should be rendered as a single text element.
   // For now, approximate the size of one space
   if (a.isLabel && b.isLabel) {
-    return 5
+    return 6
   }
-
-  return 8 // default: 2 units
+  return 6 // default: 2 units
 }
 
 BlockView.prototype.draw = function() {
@@ -454,7 +456,7 @@ BlockView.prototype.draw = function() {
     if (child.isScript && this.isCommand) {
       this.hasScript = true
       pushLine()
-      child.y = y - 1
+      child.y = y + 1;
       lines.push(child)
       scriptWidth = Math.max(scriptWidth, Math.max(1, child.width))
       child.height = Math.max(29, child.height + 3) - 2
@@ -503,7 +505,7 @@ BlockView.prototype.draw = function() {
   }
   pushLine()
 
-  var padLeft = this.horizontalPadding(children[0])
+  var padLeft = this.horizontalPadding(children[0]) + 5
   var padRight = this.horizontalPadding(lastChild)
   innerWidth += padLeft + padRight
 
@@ -672,7 +674,7 @@ ScriptView.prototype.measure = function() {
 
 ScriptView.prototype.draw = function(inside) {
   var children = []
-  var y = 1
+  var y = 2
   this.width = 0
   for (var i = 0; i < this.blocks.length; i++) {
     var block = this.blocks[i]
@@ -689,7 +691,7 @@ ScriptView.prototype.draw = function(inside) {
       this.width = Math.max(this.width, block.width)
     }
 
-    y += block.height
+    y += block.height + 3;
 
     var comment = block.comment
     if (comment) {
@@ -701,7 +703,7 @@ ScriptView.prototype.draw = function(inside) {
       this.width = Math.max(this.width, cx + comment.width)
     }
   }
-  this.height = y + 1
+  this.height = y + 3
   if (!inside && !this.isFinal) {
     this.height += block.hasPuzzle ? 44 : 36
   }
@@ -740,7 +742,7 @@ DocumentView.prototype.render = function(cb) {
   // TODO: separate layout + render steps.
   // render each script
   var width = 0
-  var height = 0
+  var height = 150
   var elements = []
   for (var i = 0; i < this.scripts.length; i++) {
     var script = this.scripts[i]

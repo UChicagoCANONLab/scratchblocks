@@ -166,6 +166,7 @@ var SVG = (module.exports = {
     return SVG.path(
       extend(props, {
         path: SVG.pointedPath(w, h),
+        class: props.class + "-alt"
       })
     )
   },

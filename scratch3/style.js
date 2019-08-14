@@ -2,51 +2,54 @@ var SVG = require("./draw.js")
 
 var Style = (module.exports = {
   cssContent: `
+    @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
     .sb3-label {
-      font: 500 12pt Helevetica Neue, Helvetica, sans-serif;
-      fill: #fff;
-      word-spacing: +1pt;
+      font: 18pt Roboto Condensed, sans-serif;
+      font-weight: bold;
+      fill: #000;
+      word-spacing: +2pt;
     }
 
-    .sb3-motion { fill: #4c97ff; stroke: #3373cc; }
-    .sb3-motion-alt { fill: #4280d7; }
+    .sb3-motion { fill: url(#motion-gradient) #fff; stroke: #5F95F7; stroke-width: 3.1px; }
+    .sb3-motion-alt { fill: #fff; stroke: #5F95F7; stroke-width: 3.1px; }
     .sb3-motion-dark { fill: #4c97ff; }
-    .sb3-looks { fill: #9966ff; stroke: #774dcb; }
-    .sb3-looks-alt { fill: #855cd6; }
+    .sb3-looks { fill: url(#looks-gradient) #fff; stroke: #9168F6; stroke-width: 3.1px;}
+    .sb3-looks-alt { fill: #fff; stroke: #9168F6; stroke-width: 3.1px; }
     .sb3-looks-dark { fill: #bd42bd; }
-    .sb3-sound { fill: #cf63cf; stroke: #bd42bd; }
-    .sb3-sound-alt { fill: #c94fc9; }
+    .sb3-sound { fill: url(#sound-gradient) #fff; stroke: #C169CA; stroke-width: 3.1px;}
+    .sb3-sound-alt { fill: #fff; stroke: #C169CA; stroke-width: 3.1px; }
     .sb3-sound-dark { fill: #bd42bd; }
-    .sb3-control { fill: #ffab19; stroke: #cf8b17; }
-    .sb3-control-alt { fill: #ec9c13; }
+    .sb3-control { fill: url(#control-gradient) #fff; stroke: #FFAB1A; stroke-width: 3.1px;}
+    .sb3-control-alt { fill: #fff; stroke: #FFAB1A; stroke-width: 3.1px;; }
     .sb3-control-dark { fill: #cf8b17; }
-    .sb3-events { fill: #ffbf00; stroke: #cc9900; }
-    .sb3-events-alt { fill: #e6ac00; }
+    .sb3-events { fill: url(#events-gradient) #fff; stroke: #F4D200; stroke-width: 3.1px;}
+    .sb3-events-alt { fill: #fff; stroke: #F4D200; stroke-width: 3.1px;}
     .sb3-events-dark { fill: #cc9900; }
-    .sb3-sensing { fill: #5cb1d6; stroke: #2e8eb8; }
-    .sb3-sensing-alt { fill: #47a8d1; }
+    .sb3-sensing { fill: url(#sensing-gradient) #fff; stroke: #71AFD2; stroke-width: 3.1px;}
+    .sb3-sensing-alt { fill: #fff; stroke: #71AFD2; stroke-width: 3.1px; }
     .sb3-sensing-dark { fill: #2e8eb8; }
-    .sb3-operators { fill: #59c059; stroke: #389438; }
-    .sb3-operators-alt { fill: #46b946; }
+    .sb3-operators { fill: url(#operators-gradient) #fff; stroke: #74BE65; stroke-width: 3.1px;}
+    .sb3-operators-alt { fill: #fff; stroke: #74BE65; stroke-width: 3.1px; }
     .sb3-operators-dark { fill: #389438; }
-    .sb3-variables { fill: #ff8c1a; stroke: #db6e00; }
-    .sb3-variables-alt { fill: #ff8000; }
+    .sb3-variables { fill: url(#variables-gradient) #fff; stroke: #F0923C; stroke-width: 3.1px;}
+    .sb3-variables-alt { fill: #fff; stroke: #F0923C; stroke-width: 3.1px; }
     .sb3-variables-dark { fill: #db6e00; }
-    .sb3-list { fill: #ff661a; stroke: #e64d00; }
-    .sb3-list-alt { fill: #ff5500; }
+    .sb3-list { fill: url(#list-gradient) #fff; stroke: #e64d00; stroke-width: 3.1px;}
+    .sb3-list-alt { fill: #fff; stroke: #e64d00; stroke-width: 3.1px; }
     .sb3-list-dark { fill: #e64d00; }
-    .sb3-custom { fill: #ff6680; stroke: #ff3355; }
-    .sb3-custom-alt { fill: #ff4d6a; }
+    .sb3-custom { fill: url(#custom-gradient) #fff; stroke: #FF6680; stroke-width: 3.1px;}
+    .sb3-custom-alt { fill: #fff; stroke: #FF6680; stroke-width: 3.1px; }
     .sb3-custom-dark { fill: #ff3355; }
     .sb3-custom-arg { fill: #ff6680; stroke: #ff3355; }
 
     /* extension blocks, e.g. pen */
-    .sb3-extension { fill: #0fbd8c; stroke: #0b8e69; }
-    .sb3-extension-alt { fill: #0da57a; }
+    .sb3-extension { fill: url(#extension-gradient) #fff; stroke: #0FBD8C; stroke-width: 3.1px;}
+    .sb3-extension-alt { fill: #fff; stroke: #0FBD8C; stroke-width: 3.1px; }
     .sb3-extension-line { stroke: #0da57a; }
     .sb3-extension-dark { fill: #0b8e69; }
 
-    /* obsolete colors: chosen by hand, indicates invalid blocks */ 
+    /* obsolete colors: chosen by hand, indicates invalid blocks */
     .sb3-obsolete { fill: #ed4242; stroke: #ca2b2b; }
     .sb3-obsolete-alt { fill: #db3333; }
     .sb3-obsolete-dark { fill: #ca2b2b; }
@@ -68,7 +71,7 @@ var Style = (module.exports = {
     .sb3-literal-string,
     .sb3-literal-number-dropdown,
     .sb3-literal-dropdown {
-      word-spacing: 0;
+      word-spacing: +2pt;
     }
     .sb3-literal-number,
     .sb3-literal-string {
@@ -84,9 +87,9 @@ var Style = (module.exports = {
       fill: #ffff80;
     }
     .sb3-comment-label {
-      font: 400 12pt Helevetica Neue, Helvetica, sans-serif;
+      font: 400 12pt Roboto Condensed, sans-serif;
       fill: #000;
-      word-spacing: 0;
+      word-spacing: +2pt;
     }
 
     .sb3-diff {
@@ -97,7 +100,11 @@ var Style = (module.exports = {
       stroke-width: 2px;
     }
     .sb3-diff-del {
-      stroke-width: 3px;
+      stroke-width: 3.1px;
+    }
+
+    .sb3-input-dropdown {
+      fill: #fff;
     }
   `.replace(/[ \n]+/, " "),
 
@@ -132,7 +139,7 @@ var Style = (module.exports = {
           SVG.el("path", {
             d:
               "M6.36 7.79a1.43 1.43 0 0 1-1-.42L1.42 3.45a1.44 1.44 0 0 1 0-2c.56-.56 9.31-.56 9.87 0a1.44 1.44 0 0 1 0 2L7.37 7.37a1.43 1.43 0 0 1-1.01.42z",
-            fill: "#fff",
+            fill: "#575e75",
           }),
         ]),
         {
@@ -673,6 +680,6 @@ var Style = (module.exports = {
     return style
   },
 
-  defaultFont: "500 12pt Helevetica Neue, Helvetica, sans-serif",
-  commentFont: "400 12pt Helevetica Neue, Helvetica, sans-serif",
+  defaultFont: "500 12pt Roboto Condensed, sans-serif",
+  commentFont: "400 12pt Roboto Condensed, sans-serif",
 })
