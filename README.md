@@ -1,4 +1,18 @@
 Make pictures of Scratch blocks from text.
+Edited by Max White for Scratch Encore.
+
+# Quick Start
+
+1. Go to `~/.../scratchblocks/` in terminal
+2. Run
+```
+npm install
+npm start
+```
+3. Go to <http://localhost:8000/> in your browser
+4. Start typing using [this syntax](http://wiki.scratch.mit.edu/wiki/Block_Plugin/Syntax) to generate formatted blocks
+
+---
 
 [![Screenshot](http://scratchblocks.github.io/screenshot.png)](https://scratchblocks.github.io/#when%20flag%20clicked%0Aclear%0Aforever%0Apen%20down%0Aif%20%3C%3Cmouse%20down%3F%3E%20and%20%3Ctouching%20%5Bmouse-pointer%20v%5D%3F%3E%3E%20then%0Aswitch%20costume%20to%20%5Bbutton%20v%5D%0Aelse%0Aadd%20(x%20position)%20to%20%5Blist%20v%5D%0Aend%0Amove%20(foo)%20steps%0Aturn%20ccw%20(9)%20degrees)
 
