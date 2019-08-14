@@ -11,7 +11,7 @@ const {
 
 const SVG = require("./draw.js")
 
-const scaleFactor = 1.22;
+const scaleFactor = 1.6;
 
 const { defaultFont, commentFont, makeStyle, makeIcons } = require("./style.js")
 
@@ -66,7 +66,6 @@ LabelView.measure = function(value, font) {
   context.font = font
   var textMetrics = context.measureText(value)
   var width = (textMetrics.width + 0.5) | 0
-  width *= scaleFactor;
   return { width: width }
 }
 
