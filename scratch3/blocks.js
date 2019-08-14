@@ -334,9 +334,16 @@ BlockView.prototype.drawSelf = function(w, h, lines) {
         ? "stack"
         : child.isInput ? child.shape : child.info.shape
       return SVG.roundRect(w, h, {
-        class: ["sb3-" + this.info.category].join(" "),
+        class: ["sb3-" + this.info.category + "-alt"].join(" "),
       })
     }
+  }
+
+  /// Reporters
+  if (this.isReporter) {
+    return SVG.pillRect(w, h, {
+      class: ["sb3-" + this.info.category + "-alt"].join(" "),
+    })
   }
 
   var func = BlockView.shapes[this.info.shape]
@@ -505,7 +512,7 @@ BlockView.prototype.draw = function() {
   pushLine()
 
   var padLeft = this.horizontalPadding(children[0]) + 5
-  var padRight = this.horizontalPadding(lastChild)
+  var padRight = this.horizontalPadding(lastChild) + 5
   innerWidth += padLeft + padRight
 
   // Commands have a minimum width
