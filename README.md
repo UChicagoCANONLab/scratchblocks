@@ -3,14 +3,15 @@ Edited by Max White for Scratch Encore.
 
 # Quick Start
 
-1. Go to `~/.../scratchblocks/` in terminal
-2. Run
+1. Clone this repo
+2. Go to `~/.../scratchblocks/` (location of cloned repo) in terminal
+3. Run
 ```
 npm install
 npm start
 ```
-3. Go to <http://localhost:8000/> in your browser
-4. Start typing using [this syntax](http://wiki.scratch.mit.edu/wiki/Block_Plugin/Syntax) to generate formatted blocks
+4. Go to <http://localhost:8000/> in your browser
+5. Start typing using [this syntax](http://wiki.scratch.mit.edu/wiki/Block_Plugin/Syntax) to generate formatted blocks
 
 ---
 
